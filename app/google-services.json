@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "211173954232",
+    "firebase_url": "https://mspc-apptest.firebaseio.com",
+    "project_id": "mspc-apptest",
+    "storage_bucket": "mspc-apptest.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:211173954232:android:c28306615fe38391559a4d",
+        "android_client_info": {
+          "package_name": "com.example.mspc_event"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "211173954232-q6dlseeo0pt45a3b638arifj75vga5c8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.mspc_event",
+            "certificate_hash": "6ee23f72dcf5aa8b3da08b2b3dc0043c3e42047d"
+          }
+        },
+        {
+          "client_id": "211173954232-td6pi3b6k2qigkgd9m8bc1m32nn1ij0n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDIyyGYfJSnK5HW72xmk3vyRqZVPF1BEfA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "211173954232-td6pi3b6k2qigkgd9m8bc1m32nn1ij0n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
