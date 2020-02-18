@@ -57,7 +57,7 @@ public class AddNote extends AppCompatActivity {
         linearLayout = findViewById(R.id.linearLayout);
         dbRef.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot){
 
                 Context context = getApplicationContext();
                 EditText et_body = new EditText(context);
@@ -70,10 +70,10 @@ public class AddNote extends AppCompatActivity {
                 et_body.setId(2);
 
                 et_heading.setLayoutParams(params);
-                et_heading.setGravity(Gravity.LEFT);
+                et_heading.setGravity(Gravity.START);
 
                 et_body.setLayoutParams(params);
-                et_body.setGravity(Gravity.LEFT);
+                et_body.setGravity(Gravity.START);
 
                 String noteHeading = dataSnapshot.child("Notes").child(noteid).child("Heading").getValue().toString();
                 String noteText = dataSnapshot.child("Notes").child(noteid).child("Data").getValue().toString();
