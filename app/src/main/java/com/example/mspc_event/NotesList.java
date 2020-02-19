@@ -53,7 +53,6 @@ public class NotesList extends AppCompatActivity {
                 startActivity(i);
             }
         });
-        Log.d(TAG,"Crashing in 3,2,1..........!");
         showAllNotes();
     }
     protected void showAllNotes (){

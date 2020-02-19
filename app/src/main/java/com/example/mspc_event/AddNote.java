@@ -24,6 +24,7 @@ public class AddNote extends AppCompatActivity {
     private DatabaseReference dbRef;
     LinearLayout linearLayout;
     private int noteID;
+    boolean is_it_new;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +33,8 @@ public class AddNote extends AppCompatActivity {
         noteID = getIntent().getExtras().getInt("NotesID");
         Log.d(TAG,"Looking up contents of Note Number: " + noteID);
         loadInfo(noteID);
+
+
     }
     @Override
     protected void onStop(){
@@ -44,14 +47,23 @@ public class AddNote extends AppCompatActivity {
         Log.d(TAG,"NEW Heading = \t" + heading);
         et = findViewById(2);
         String body = et.getText().toString();
+        if(heading.length()==0 || body.length()==0){
+            Log.d(TAG,"Discarding the note, it appears to be empty AF");
+            return;
+        }
+
         Log.d(TAG,"NEW data = \t" + body);
 
         dbRef.child("Notes").child(noteID + "").child("Heading").setValue(heading);
         dbRef.child("Notes").child(noteID + "").child("Data").setValue(body);
+        if(is_it_new==true)
+            dbRef.child("Notes").child("Total").setValue(noteID);
+
+
 
     }
 
-    protected void loadInfo(int noteID){
+    protected void loadInfo(final int noteID){
         dbRef = FirebaseDatabase.getInstance().getReference();
         final String noteid = noteID + "";
         linearLayout = findViewById(R.id.linearLayout);
@@ -74,11 +86,24 @@ public class AddNote extends AppCompatActivity {
 
                 et_body.setLayoutParams(params);
                 et_body.setGravity(Gravity.START);
+                String noteHeading;
+                String noteText;
+                try{
+//                    This will try to get the data from the cloud, it will success if the noteid already exists.
+                    noteHeading = dataSnapshot.child("Notes").child(noteid).child("Heading").getValue().toString();
+                    noteText = dataSnapshot.child("Notes").child(noteid).child("Data").getValue().toString();
+                    et_heading.setText(noteHeading);
+                    et_body.setText(noteText);
+                    is_it_new=false; //FALSE means that the note is not new
+                }
+                catch (Exception e){
+//                    however, if the noteid is new, it will have to make a new note and thus show empty EditText fields.
+                    noteHeading = "";
+                    noteText = "";
+                    is_it_new = true;
+                    Log.d(TAG,"APPEARS TO BE A NEW NOTE, TRYING TO SET THINGS UP.");
+                }
 
-                String noteHeading = dataSnapshot.child("Notes").child(noteid).child("Heading").getValue().toString();
-                String noteText = dataSnapshot.child("Notes").child(noteid).child("Data").getValue().toString();
-                et_heading.setText(noteHeading);
-                et_body.setText(noteText);
                 Log.d(TAG,"HEADING:\t" + noteHeading);
                 Log.d(TAG,"BODY:\t" + noteText);
                 linearLayout.addView(et_heading);
