@@ -24,6 +24,7 @@ public class AddNote extends AppCompatActivity {
     private DatabaseReference dbRef;
     LinearLayout linearLayout;
     private int noteID;
+
     boolean is_it_new;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +54,6 @@ public class AddNote extends AppCompatActivity {
         }
 
         Log.d(TAG,"NEW data = \t" + body);
-
         dbRef.child("Notes").child(noteID + "").child("Heading").setValue(heading);
         dbRef.child("Notes").child(noteID + "").child("Data").setValue(body);
         if(is_it_new==true)
@@ -81,6 +81,9 @@ public class AddNote extends AppCompatActivity {
                 et_heading.setId(1);
                 et_body.setId(2);
 
+                et_heading.setHint("Heading");
+                et_body.setHint("Write your note here");
+
                 et_heading.setLayoutParams(params);
                 et_heading.setGravity(Gravity.START);
 
@@ -89,7 +92,7 @@ public class AddNote extends AppCompatActivity {
                 String noteHeading;
                 String noteText;
                 try{
-//                    This will try to get the data from the cloud, it will success if the noteid already exists.
+//                    This will try to get the data from the cloud, it will be a success if the noteid already exists.
                     noteHeading = dataSnapshot.child("Notes").child(noteid).child("Heading").getValue().toString();
                     noteText = dataSnapshot.child("Notes").child(noteid).child("Data").getValue().toString();
                     et_heading.setText(noteHeading);

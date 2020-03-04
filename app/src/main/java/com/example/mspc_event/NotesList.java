@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Typeface;
+import android.net.Uri;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -23,8 +25,16 @@ import android.text.Layout;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
+import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 
 public class NotesList extends AppCompatActivity {
 
@@ -40,6 +50,7 @@ public class NotesList extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notes_list);
+        showAllNotes();
 
 
         FloatingActionButton fab = findViewById(R.id.fab);
@@ -53,7 +64,6 @@ public class NotesList extends AppCompatActivity {
                 startActivity(i);
             }
         });
-        showAllNotes();
     }
     protected void showAllNotes (){
 
@@ -75,7 +85,7 @@ public class NotesList extends AppCompatActivity {
 
 
                     CardView card = new CardView(context);
-                    card.setCardBackgroundColor(Color.parseColor("#404040"));
+                    card.setCardBackgroundColor(Color.parseColor("#ffffff"));
                     Toolbar.LayoutParams params = new Toolbar.LayoutParams(
                             Toolbar.LayoutParams.MATCH_PARENT,
                             Toolbar.LayoutParams.MATCH_PARENT
@@ -98,23 +108,29 @@ public class NotesList extends AppCompatActivity {
 
                     // Initialize a new TextView to put in CardView
                     TextView tv = new TextView(context);
-                    params.setMargins(30,20,30,10);
+                    params.setMargins(30,20,30,20);
                     tv.setLayoutParams(params);
                     tv.setText(heading);
-                    tv.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 24);
-                    tv.setTextColor(Color.WHITE);
+                    tv.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 26);
+                    tv.setTextColor(Color.BLUE);
+                    tv.setSingleLine();
 
                     card.addView(tv);
-                    params.setMargins(30,100,30,0);
+                    params.setMargins(30,150,30,0);
                     TextView tv2 = new TextView(context);
                     tv2.setLayoutParams(params);
+
                     tv2.setText(data);
-                    tv2.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
-                    tv2.setTextColor(Color.WHITE);
+                    tv2.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 18);
+                    tv2.setTextColor(Color.BLACK);
                     card.addView(tv2);
 
-                    layout.addView(card);
+                    Typeface typeface = getResources().getFont(R.font.segoeui);
 
+                    tv2.setTypeface(typeface);
+                    tv.setTypeface(typeface);
+
+                    layout.addView(card);
 
                     Log.d(TAG,heading);
                     Log.d(TAG,data);
@@ -127,6 +143,5 @@ public class NotesList extends AppCompatActivity {
             }
         });
     }
-
 
 }
