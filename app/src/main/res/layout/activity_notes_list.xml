@@ -14,12 +14,16 @@
         android:layout_marginStart="339dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="52dp"
+
         android:clickable="true"
+        android:src="@drawable/ic_plus_2"
+        app:backgroundTint="#FFFFFF"
+        app:maxImageSize="150px"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
+         />
 
     <ScrollView
         android:layout_width="match_parent"
