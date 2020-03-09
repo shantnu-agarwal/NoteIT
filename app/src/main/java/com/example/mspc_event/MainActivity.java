@@ -22,18 +22,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void next(View view){
-        Log.d(TAG,"PRESSED THE BUTTON");
-        Intent i = new Intent(MainActivity.this,NotesList.class);
+    public void next(View view) {
+        Log.d(TAG, "PRESSED THE BUTTON");
+        Intent i = new Intent(MainActivity.this, NotesList.class);
         startActivity(i);
     }
-
-
-
-
-
-
-
-
-
 }

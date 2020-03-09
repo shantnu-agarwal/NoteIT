@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:visibility="visible"
     tools:context=".NotesList">
 
 
@@ -18,29 +19,29 @@
         android:clickable="true"
         android:src="@drawable/ic_plus_2"
         app:backgroundTint="#FFFFFF"
-        app:maxImageSize="150px"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-         />
+        app:maxImageSize="150px" />
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="1dp">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:id="@+id/linearlayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
-                android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
                 app:cardBackgroundColor="#404040"
                 app:cardCornerRadius="10dp"
@@ -50,12 +51,12 @@
                     android:id="@+id/textView1"
                     android:layout_width="397dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
                     android:text="This is a Text View"
                     android:textAlignment="viewStart"
                     android:textColor="#fff"
-                    android:textSize="24sp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"/>
+                    android:textSize="24sp" />
             </androidx.cardview.widget.CardView>
 
 
