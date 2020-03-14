@@ -16,7 +16,7 @@ Data is fetched from firebase and updated in realtime. The firebase connection t
 
 ## Project Structure:
 
-We have 3 Activities: 
+There are 3 Activities: 
   1. MainActivity (Entry Screen, launcher activity)
   2. NotesList (Lists out all Notes in scrollable linear layout)
   3. AddNote (Create a new note/ edit existing note)
